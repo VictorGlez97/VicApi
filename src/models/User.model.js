@@ -1,5 +1,5 @@
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 var dbConn = require('./../../config/db/config');
 
