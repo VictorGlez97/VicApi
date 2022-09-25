@@ -85,9 +85,8 @@ User.findAll = function ( result ) {
             console.log( 'error: ', err );
             result( err, null );
         } else {
-
             res.map( us => { us.Password = 'Confidence'; } );
-
+            console.log(res);
             result( null, res );
         }
 

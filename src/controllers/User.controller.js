@@ -47,6 +47,22 @@ exports.login = function ( req, res ) {
     
 }
 
+exports.findAll = function ( req, res ) {
+
+    User.findAll( function ( err, users ) {
+
+        console.log(users);
+
+        if ( err ){
+            res.send(err);
+        } else {
+            res.json(users);
+        }
+
+    })
+
+}
+
 exports.findById = function ( req, res ) {
 
     User.findById( req.params.id, function ( err, user ){
