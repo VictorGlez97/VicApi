@@ -17,7 +17,7 @@ exports.create = function( req, res ) {
 
         res.send(err)
 
-        res.json({ error: true, message: 'User added successfully!', data: user });
+        res.json({ error: false, message: 'User added successfully!', data: user });
 
     });
 

@@ -20,6 +20,15 @@ app.get('/', (req, res) => {
 // const UserRoutes = require('./src/routes/User.router');
 
 app.use('/api/user', require('./src/routes/User.router'));
+
+// app.use('/api/project', require('./src/routes/Project.router'));
+
+app.use('/api/team', require('./src/routes/Team.router'));
+
+app.use('/api/game', require('./src/routes/Game.router'));
+
+app.use('/api/bill', require('./src/routes/Bill.router'));
+
 // routes.initialize(app);
 
 app.listen(port, () => {
