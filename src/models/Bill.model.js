@@ -5,14 +5,9 @@ var Bill = function(bill) {
     this.Name = bill.Name,
     this.Amount = bill.Amount,
     this.Date = bill.Date,
-    this.User = bill.User
+    this.User = bill.User,
+    this.TypeBill = bill.TypeBill
 }
-
-var TypeBill = function(tb) {
-    this.Name = tb.Name,
-    this.Priority = tb.Priority 
-}
-
 
 Bill.create = async function ( newBill, result ) {
 

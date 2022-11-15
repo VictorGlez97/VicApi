@@ -29,6 +29,8 @@ app.use('/api/game', require('./src/routes/Game.router'));
 
 app.use('/api/bill', require('./src/routes/Bill.router'));
 
+app.use('/api/catalog', require('./src/routes/Catalog.router'));
+
 // routes.initialize(app);
 
 app.listen(port, () => {
