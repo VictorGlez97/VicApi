@@ -42,7 +42,7 @@ Catalog.find = async function ( module, section, result ) {
         console.log( module );
         console.log( section );
 
-        var consult = section != '' ? 'SELECT CatalogID AS key, Value AS value FROM Catalog WHERE Module = ? AND Section = ?' : 'SELECT Value FROM Catalog WHERE Module = ?';
+        var consult = section != '' ? 'SELECT CatalogID, Value AS value FROM Catalog WHERE Module = ? AND Section = ?' : 'SELECT Value FROM Catalog WHERE Module = ?';
         var values = section != '' ? [ module, section ] : [ module ]; 
 
         console.log( consult );
