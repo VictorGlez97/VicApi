@@ -16,9 +16,9 @@ exports.create = function( req, res ) {
     Bill.create( new_bill, function ( err, bill ) {
 
         if ( err ) {
-            res.send(err);
+            res.status(400).json({ Complete: true, Success: false, Error: true, Message: err });
         } else {
-            res.json({ error: false, message: 'Bill added successfully' });
+            res.status(201).json({ Success: true, Error: false, Message: 'Bill added successfully', Complete: true });
         }
 
     });
