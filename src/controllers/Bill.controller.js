@@ -18,7 +18,7 @@ exports.create = function( req, res ) {
         if ( err ) {
             res.status(400).json({ Complete: true, Success: false, Error: true, Message: err });
         } else {
-            res.status(201).json({ Success: true, Error: false, Message: 'Bill added successfully', Complete: true });
+            res.status(201).json({ Complete: true, Success: true, Error: false, Message: 'Bill added successfully' });
         }
 
     });
@@ -28,15 +28,30 @@ exports.create = function( req, res ) {
 exports.findByPeriod = function ( req, res ) {
     
     console.log( req.body );
-
-    Bill.findByPeriod( req.body, function ( err, bill ) {
-
-        if ( err ) {
-            res.send(err);
-        } else {
-            res.json( bill );
-        }
-
-    });
-
+    BillsByPeriod = [];
+    CountsByPeriod = [];
+    
+    try {
+     
+        Bill.findByPeriod( req.body, function ( err, bill ) {
+            if ( err ) {
+                res.send(err);
+            } else {
+                BillsByPeriod = bill;
+            }
+        });
+    
+        Bill.findByCounts( req.body, function ( err, counts ) {
+            if ( err ) {
+                res.status(400).json({ Complete: true, Success: false, Error: true, Message: err });
+            } else {
+                CountsByPeriod = counts;
+                res.status(201).json({ Complete: true, Success: true, Error: false, Message: 'Succesfully', Bills: BillsByPeriod, Counts: CountsByPeriod });
+            }
+        });
+        
+    } catch ( error ) {
+        console.log( error );
+        res.status(403).json({ Complete: false, Success: false, Error: true, Message: error });
+    }
 }
