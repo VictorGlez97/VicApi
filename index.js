@@ -31,6 +31,8 @@ app.use('/api/bill', require('./src/routes/Bill.router'));
 
 app.use('/api/catalog', require('./src/routes/Catalog.router'));
 
+app.use('/api/bank', require('./src/routes/Bank.router'));
+
 // routes.initialize(app);
 
 app.listen(port, () => {
