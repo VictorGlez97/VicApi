@@ -28,6 +28,13 @@ Gambles.create = async function ( newGamble, result ) {
 
             dbConn.query('SELECT * FROM Bank WHERE DInitial = ? AND DFinal = ?', [IB, moment(FB).add(-1, 'days').format('YYYY-MM-DD')], function ( errBank, resBank ) {
 
+                console.log( resBank );
+
+                if (resBank === undefined || resBank[0] === undefined || resBank[0].BankID === undefined) {
+                    result('don´t exist bank to the gambie, please register a new bank to register gambles', null);
+                    return;
+                }                
+
                 const BankID = resBank[0].BankID;
 
                 if ( errBank ) {
@@ -38,6 +45,7 @@ Gambles.create = async function ( newGamble, result ) {
                 if ( BankID <= 0 ) {
                     console.log( 'error: don´t exist bank to the gamble' );
                     result( 'don´t exist bank to the gamble', null );
+                    return;
                 }
 
                 newGamble.Bank = BankID;
@@ -83,8 +91,7 @@ Gambles.update = function ( GambleID, gamble, result ) {
     
         });
 
-    } catch (error) {
-        
+    } catch (error) {        
         console.log(error);
         result( error, null );
     }

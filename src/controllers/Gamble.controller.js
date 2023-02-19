@@ -12,6 +12,11 @@ exports.create = function( req, res ) {
 
         Gamble.create( nGamble, function ( err, gambles ) {
 
+            if (gambles === 'don´t exist bank to the gambie, please register a new bank to register gambles') {
+                res.status(404).json({ Complete: true, Success: false, Error: true, Message: gambles });
+                return;
+            }
+
             if ( err ) {
                 res.status(400).json({ Complete: true, Success: false, Error: true, Message: err });
             } 
