@@ -5,6 +5,8 @@ const router = express.Router();
 
 const GambleController = require('../controllers/Gamble.controller');
 
+router.get('/', GambleController.getByPeriod);
+
 router.post('/', GambleController.create);
 
 router.post('/:id', GambleController.update);

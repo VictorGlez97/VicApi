@@ -1,6 +1,31 @@
 
 const Gamble = require('../models/Gamble.model');
 
+exports.getByPeriod = function( req, res ) {
+
+    try {
+        
+        console.log( req );
+
+        Gamble.getByPeriod( function ( err, gambles ) {
+
+            if ( err ) {
+                res.status(400).json({ Complete: true, Success: false, Error: true, Message: err });
+            } 
+            else {
+                console.log( gambles );
+                res.status(201).json({ Complete: true, Success: true, Error: false, Data: gambles });
+            }
+
+        });
+
+    } catch (error) {
+        console.log( error );
+        res.status(404).send({ error: true, message: error });
+    }
+
+}
+
 exports.create = function( req, res ) {
 
     try {
