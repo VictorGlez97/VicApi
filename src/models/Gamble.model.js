@@ -9,6 +9,7 @@ var Gambles = function(gambles) {
     this.Odd = gambles.Odd,
     this.Price = gambles.Price,
     this.Bank = gambles.Bank,
+    this.Date = gambles.Date,
     this.Win = gambles.Win
 }
 
@@ -112,7 +113,9 @@ Gambles.create = async function ( newGamble, result ) {
                 }
 
                 newGamble.Bank = BankID;
-                //console.log( BankID );
+                newGamble.Date = moment().format('YYYY-MM-DD HH:mm:ss');
+                newGamble.Win = 0;
+
                 console.log( newGamble );
 
                 dbConn.query('INSERT INTO Gambles set ?', newGamble, function ( errGamble, resGamble ) {
